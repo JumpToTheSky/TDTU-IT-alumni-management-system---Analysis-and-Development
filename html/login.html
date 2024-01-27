@@ -24,18 +24,18 @@
                 </ul>
             </div>
         </div>
-        <div class="row login-body " >
-            <div class="col-md-4 col-lg-5 logo-tittle d-none d-sm-block" style="padding: 40px;" >
+        <div class="row login-body" >
+            <div class="col-md-4 col-sm-4 col-lg-4 logo-tittle d-none d-sm-block" style="padding: 40px;" >
                 <img class="mx-auto d-block" src="/images/logo-tdtu-inkythuatso-01.png" alt="logo" width="150" height="75">
                 <p class="h1 p-4 ms-4 text-white">Cổng thông tin <br>Cựu học sinh, <br>sinh viên</p>
             </div>
             
-            <div class="col col-lg-7">
+            <div class="col">
                 <div class="login-form mb-5 mt-5">
                     <div class="d-flex justify-content-center">
                         <p class="h2 htext">Xin Chào!</p>
                     </div>
-                    <form>
+                    <form id="loginForm">
                         <div class="mb-3">
                             <label for="userID" class="form-label">Tài khoản</label>
                             <input type="text" class="form-control" id="userID" placeholder="Nhập tài khoản">
@@ -57,8 +57,35 @@
                         </div>
                         
                         <div class="text-center mt-3">
-                            <a href="#">Quên mật khẩu?</a>
+                            <a href="#" onclick="showForgotPasswordForm()" id="forgotPasswordLink">Quên mật khẩu?</a>
                         </div>
+
+                    </form>
+                    <form class="forgot-password-form" >
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Nhập email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">User ID</label>
+                            <input type="email" class="form-control" id="userID" placeholder="Nhập User ID">
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <button type="button" class="btn btn-danger" onclick="hideForgotPasswordForm()">Hủy</button>
+                            <button type="submit" class="btn btn-danger btn-forgot" onclick="hideForgotPasswordForm()">Gửi yêu cầu</button>
+                        </div>
+                        
+                        
+                        <div style="visibility: hidden;">
+                            <div class="mb-3">
+                                <label for="nothing" class="form-label">nothing</label>
+                                <input type="nothing" class="form-control" id="userID" placeholder="userID">
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="#" onclick="showForgotPasswordForm()" id="forgotPasswordLink">Quên mật khẩu?</a>
+                            </div>
+                        </div>
+                        
                     </form>
                 </div>
                 
@@ -68,7 +95,25 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script>
+        // Hàm để hiển thị form quên mật khẩu và ẩn form đăng nhập
+        function showForgotPasswordForm() {
+            var loginForm = document.getElementById('loginForm');
+            var forgotPasswordForm = document.querySelector('.forgot-password-form');
+            
+            loginForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'block';
+        }
+
+        // Hàm để ẩn form quên mật khẩu và hiển thị form đăng nhập
+        function hideForgotPasswordForm() {
+            var loginForm = document.getElementById('loginForm');
+            var forgotPasswordForm = document.querySelector('.forgot-password-form');
+            
+            loginForm.style.display = 'block';
+            forgotPasswordForm.style.display = 'none';
+        }
+    </script>
     
 </body>
 </html>
